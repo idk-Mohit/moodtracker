@@ -13,6 +13,10 @@
 
     <!-- Fonts -->
     <link
+      href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap"
       rel="stylesheet"
     />
@@ -40,6 +44,22 @@
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="#footer">Contact</a></li>
+        <% if(user === 'undefined'){ %>
+        <li><a href="/signin">Log in</a></li>
+        <% } %> <%if(user !== 'undefined'){ %>
+        <div id="userSectionDiv">
+          <i id="userSection" class="fa-solid fa-user"></i>
+          <div id="userSection_dropdown_content">
+            <div id="dropdownInnerDiv">
+              <p>
+                Welcome <span><%= user.name %></span> <br />
+                <!-- <%= user.email %> -->
+              </p>
+              <a href="/logout"><button>Log Out</button></a>
+            </div>
+          </div>
+        </div>
+        <% } %>
       </ul>
     </nav>
     <main>

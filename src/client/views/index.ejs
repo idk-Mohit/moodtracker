@@ -28,20 +28,34 @@
         <li><a href="#feature">About</a></li>
         <li><a href="#service">services</a></li>
         <li><a href="/calendar">calendar</a></li>
-        <li><a href="/signin">Log in</a></li>
         <li><a href="#footer">Contact</a></li>
-        <li><a href="/logout">Log Out</a></li>
-        
+        <% if(user === 'undefined'){ %>
+        <li><a href="/signin">Log in</a></li>
+        <% } %> <%if(user !== 'undefined'){ %>
+        <div id="userSectionDiv">
+          <i id="userSection" class="fa-solid fa-user"></i>
+          <div id="userSection_dropdown_content">
+            <div id="dropdownInnerDiv">
+              <p>
+                Welcome <span><%= user.name %></span> <br />
+                <!-- <%= user.email %> -->
+              </p>
+              <a href="/logout"><button>Log Out</button></a>
+            </div>
+          </div>
+        </div>
+        <% } %>
       </ul>
     </nav>
 
     <section id="banner">
       <div class="banner-text">
-        <li><%= user.name %></li>
         <h1>Mood Measure</h1>
         <p>Keep the track of your mood by joining us...</p>
         <div class="banner-btn">
-          <a href="/login"><span></span>Log In</a>
+          <% if(user === 'undefined'){ %>
+          <a href="/signin"><span></span>Log In</a>
+          <% } %>
           <!-- <a href="/login"><span></span>Sign Up</a> -->
         </div>
       </div>
